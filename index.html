@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <!-- Latest jQuery -->	
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <!-- Circular Progress Bar -->
+        <script src="circularProgressBar.js"></script>
+    </head>
+    <body>
+        <style>
+        /* Center everything on the page */
+        html, body 
+        {
+            background-color: #E4EDF9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            font-family: sans-serif;  
+            margin:0;
+            padding:0;
+        }
+
+        .center 
+        { 
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background-color:#F0F5FF;
+        }
+
+        .center > div 
+        {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: #B5D3ED;
+            padding: 20px;
+            border-radius: 10px;
+
+            -webkit-box-shadow: 0px 0px 53px -7px rgba(101,129,229,0.4);
+            -moz-box-shadow: 0px 0px 53px -7px rgba(101,129,229,0.4);
+            box-shadow: 0px 0px 53px -7px rgba(101,129,229,0.4);
+        }
+
+        .center p
+        {
+            margin:7px;
+        }
+
+        input, select
+        {
+            display: block;
+            width: 200px;
+            height:35px;
+            border: 1px dotted #CAD3E5;
+            border-radius:5px;
+            padding: 5px;
+            margin-bottom:10px;
+        }
+
+        button
+        {
+            display:block;
+            width: 200px;
+            height:35px;
+            background-color: #98BFE0;
+            color:white;
+            border-radius:5px;
+            border:none;
+            margin-top:16px;
+        }
+
+        button:hover
+        {
+            background-color: #638EE9;
+            color:white;
+        }
+
+        h3
+        {
+            text-align:center;
+        }
+        </style>
+
+        
+
+        <!-- Example DOM -->
+        <div class="center">
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>circularProgressBar</h3>
+                            <p>Color:</p>
+                            <p>
+                                <input type="color" id="pColor" value="#98BFE0" />
+                            </p>
+                            <p>Thickness (px):</p>
+                            <p>
+                                <input type="number" id="pStroke" value="15" />
+                            </p>
+                            <p>Animation Speed (sec):</p>
+                            <p>
+                                <input type="number" id="pAnim" value="1" />
+                            </p>
+                            <p>Progress (%):</p>
+                            <p>
+                                <input type="number" id="pProgress" value="80" step="10" />
+                            </p>
+                        </td>
+                        <td>
+                            <!-- Container that will hold the progress bar -->
+                            <div id="progressbarContainer"></div>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+
+        
+
+        <script>
+            //Create the progress bar
+            var p = new progressBar(
+            { 
+                color: "#98BFE0",                       //blue bar
+                size: "400",                            //400x400px
+                strokewidth: 15,                        //15px thick
+                progress: 0,                            //start invisible (0% done)
+                animationSpeed: 1,                      //animate to the next given value in 2 seconds
+                id:"pbar",                              //make the ID 'pbar'
+                container: $('#progressbarContainer')   //put it in the div with id="progressbarContainer"
+            });
+
+            //After a little while...
+            setTimeout(function()
+            {
+                //animate it
+                p.setProgress(80);
+
+            }, 1000);
+
+            //When the color value changes
+            $( "#pColor" ).change(function() 
+            {
+                p.setColor( $(this).val() );
+            });
+
+            //When the thickness value changes
+            $( "#pStroke" ).change(function() 
+            {
+                p.setStrokeWidth( $(this).val() );
+            });
+
+            //When the animation speed value changes
+            $( "#pAnim" ).change(function() 
+            {
+                p.setAnimationSpeed( $(this).val() );
+            });
+
+            //When the progress value changes
+            $( "#pProgress" ).change(function() 
+            {
+                p.setProgress( $(this).val() );
+            });
+
+
+        </script>
+    </body>
+</html>
