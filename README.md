@@ -2,6 +2,8 @@
 Easy to use circular progress bar - draws dynamic SVGs
 by Efraim Meulenberg
 
+[HOSTED EXAMPLE](http://tornadotwins.com/github/circularProgressBar)
+
 Requires jQuery
 
 This progress bar allows you to draw a crystal clear svg-based circular progress bar using
